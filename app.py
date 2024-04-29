@@ -7,9 +7,17 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 import cv2
 import numpy as np
+import os
+import pytesseract
+
+# Set the default path to the Tesseract OCR executable
+default_tesseract_path = 'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
+# Get Tesseract path from environment variable
+tesseract_path = os.getenv('TESSERACT_PATH', default_tesseract_path)
 
 # Set the path to the Tesseract OCR executable
-pytesseract.pytesseract.tesseract_cmd = r'./tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
 # Function to read text from an image
 def read_text_from_image(image):
